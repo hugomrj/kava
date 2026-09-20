@@ -702,10 +702,101 @@ tbody tr:hover td { background: #F6FAF9; }
   .search input { width: 150px; }
 }
 
-@media (max-width: 1150px) {
-  .hnav { overflow-x: auto; scrollbar-width: none; }
-  .hnav::-webkit-scrollbar { display: none; }
+
+/* =================================================================
+   RESPONSIVE - TABLET/LAPTOP (900px - 1280px)
+   Menú horizontal con scroll
+   ================================================================= */
+@media (min-width: 900px) and (max-width: 1279px) {
+  /* Menú con scroll horizontal */
+  .hnav {
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    scroll-behavior: smooth;
+    padding-right: 20px; /* Espacio para que el último item no quede pegado */
+  }
+
+  .hnav::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  /* Items con padding reducido para aprovechar espacio */
+  .hnav .nav-item {
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  /* Submenús siguen funcionando con hover (igual que desktop) */
+  .submenu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    min-width: 242px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--sh-lg);
+    padding: 6px;
+    z-index: 40;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: 0.22s;
+  }
+
+  .has-sub:hover > .submenu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Flyouts también funcionan con hover */
+  .fly {
+    position: absolute;
+    top: -7px;
+    left: calc(100% + 6px);
+    min-width: 224px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--sh-lg);
+    padding: 6px;
+    z-index: 45;
+    opacity: 0;
+    transform: translateX(8px);
+    pointer-events: none;
+    transition: 0.2s;
+  }
+
+  .has-fly:hover > .fly {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  /* Indicador visual de scroll (opcional - flecha sutil a la derecha) */
+  .hnav::after {
+    content: '';
+    position: sticky;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.9));
+    pointer-events: none;
+    z-index: 10;
+  }
 }
+
+
+
+
+
+
+
+
 
 
 @media (max-width: 900px) {

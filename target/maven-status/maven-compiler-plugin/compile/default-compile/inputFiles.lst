@@ -1,2 +1,3 @@
 /home/hugo/dev/springboot/kava/src/main/java/com/example/kava/KavaApplication.java
 /home/hugo/dev/springboot/kava/src/main/java/com/example/kava/controllers/AuthController.java
+/home/hugo/dev/springboot/kava/src/main/java/com/example/kava/controllers/DashboardController.java

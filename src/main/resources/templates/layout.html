@@ -1,0 +1,35 @@
+<!-- src/main/resources/templates/layout.html -->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- El título se combinará: "Título de la página - KAVA ERP" -->
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">KAVA ERP</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+<body>
+
+<!-- 1. AQUÍ SE INYECTA EL MENÚ (compartido por todas las páginas) -->
+<div th:replace="~{fragments/menu :: main-menu}"></div>
+
+<!-- 2. AQUÍ SE INYECTARÁ EL CONTENIDO ESPECÍFICO DE CADA VISTA (Dashboard, Ventas, etc.) -->
+<main class="content" layout:fragment="content">
+    <!-- Este bloque será reemplazado por el contenido de dashboard.html -->
+</main>
+
+<!-- 3. SCRIPTS GLOBALES (se cargan en todas las páginas) -->
+<script th:src="@{/js/menu-ui.js}"></script>
+
+<!-- 4. PLACEHOLDER PARA SCRIPTS ESPECÍFICOS DE CADA VISTA -->
+<th:block layout:fragment="scripts">
+    <!-- Si la vista hija necesita scripts extra (como dashboard.js), los inyectará aquí -->
+</th:block>
+
+</body>
+</html>

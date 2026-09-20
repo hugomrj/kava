@@ -15,11 +15,7 @@ public class AuthController {
         return "login"; // Busca src/main/resources/templates/login.html
     }
 
-    // 2. Ruta protegida: Muestra el Dashboard
-    @GetMapping("/dashboard")
-    public String showDashboard() {
-        return "dashboard"; // Busca src/main/resources/templates/dashboard.html
-    }
+
 
     // 3. Procesamiento del Login con HTMX
     @PostMapping("/auth/login")
