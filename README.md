@@ -29,9 +29,18 @@ DB_PASSWORD=tu_contraseña_secreta
 
 Para iniciar la aplicación en modo desarrollo:
 
+### Linux / macOS
 ```bash
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
+
+
+### Windows
+```cmd
+mvnw.cmd spring-boot:run
+```
+
+
 
 ---
 
@@ -39,9 +48,16 @@ mvn spring-boot:run
 
 Para limpiar y generar la aplicación:
 
+### Linux / macOS
 ```bash
-mvn clean package
+./mvnw clean package
 ```
+### Windows
+```cmd
+mvnw.cmd clean package
+```
+
+
 
 El archivo `.jar` se genera en:
 

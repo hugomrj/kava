@@ -10,63 +10,112 @@ public class Usuario {
     @Column(name = "Codigo")
     private Integer codigo;
 
-    @Column(name = "CodigoNiveles", insertable = false, updatable = false)
+    @Column(name = "codigo_niveles", insertable = false, updatable = false)
     private Integer codigoNiveles;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CodigoNiveles")
+    @JoinColumn(name = "codigo_niveles")
     private NivelUsuario nivel;
 
     @Column(name = "Estado")
     private Integer estado;
 
-    @Column(name = "CI")
+    @Column(name = "ci")
     private String ci;
 
-    @Column(name = "Nombre")
+    @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "Apellido")
+    @Column(name = "apellido")
     private String apellido;
 
-    @Column(name = "Celular")
+    @Column(name = "celular")
     private String celular;
 
-    @Column(name = "Usuario")
+    @Column(name = "usuario")
     private String usuario;
 
-    // ✅ CORRECCIÓN: Mapeamos al campo "Clave" de tu base de datos
-    @Column(name = "Clave")
-    private String clave;
+    @Column(name = "password")
+    private String password;
 
-    // --- Getters y Setters ---
-    public Integer getCodigo() { return codigo; }
-    public void setCodigo(Integer codigo) { this.codigo = codigo; }
+    public Integer getCodigo() {
+        return codigo;
+    }
 
-    public Integer getCodigoNiveles() { return codigoNiveles; }
-    public void setCodigoNiveles(Integer codigoNiveles) { this.codigoNiveles = codigoNiveles; }
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
 
-    public NivelUsuario getNivel() { return nivel; }
-    public void setNivel(NivelUsuario nivel) { this.nivel = nivel; }
+    public Integer getCodigoNiveles() {
+        return codigoNiveles;
+    }
 
-    public Integer getEstado() { return estado; }
-    public void setEstado(Integer estado) { this.estado = estado; }
+    public void setCodigoNiveles(Integer codigoNiveles) {
+        this.codigoNiveles = codigoNiveles;
+    }
 
-    public String getCi() { return ci; }
-    public void setCi(String ci) { this.ci = ci; }
+    public NivelUsuario getNivel() {
+        return nivel;
+    }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setNivel(NivelUsuario nivel) {
+        this.nivel = nivel;
+    }
 
-    public String getApellido() { return apellido; }
-    public void setApellido(String apellido) { this.apellido = apellido; }
+    public Integer getEstado() {
+        return estado;
+    }
 
-    public String getCelular() { return celular; }
-    public void setCelular(String celular) { this.celular = celular; }
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
 
-    public String getUsuario() { return usuario; }
-    public void setUsuario(String usuario) { this.usuario = usuario; }
+    public String getCi() {
+        return ci;
+    }
 
-    public String getClave() { return clave; }
-    public void setClave(String clave) { this.clave = clave; }
+    public void setCi(String ci) {
+        this.ci = ci;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
+

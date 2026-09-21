@@ -20,10 +20,16 @@ public class AuthController {
     }
 
 
+
     @PostMapping("/auth/login")
     public ResponseEntity<String> login(@RequestParam String username,
                                         @RequestParam String password,
                                         HttpSession session) {
+
+
+        System.out.println("Usuario: " + username);
+        System.out.println("Password: " + password);
+
 
         Optional<Usuario> opt = authService.login(username, password);
 
