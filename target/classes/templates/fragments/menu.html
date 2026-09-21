@@ -3,8 +3,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<!-- Definimos el fragmento con el nombre "main-menu" -->
-<nav class="topnav" th:fragment="main-menu">
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- BLOQUE 1: MENÚ HORIZONTAL (Solo Desktop > 1280px) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<nav class="topnav desktop-nav" th:fragment="menu">
     <div class="brand">
         <div class="mark-sm">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
@@ -15,32 +17,14 @@
         <div class="bname"><strong>KAVA</strong><span>ERP SUITE</span></div>
     </div>
 
-    <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Abrir menú">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-    </button>
-
-    <ul class="hnav" id="mainNav">
-        <!-- Botón X DENTRO del drawer (primer elemento) -->
-        <li class="mobile-close-header">
-            <button class="mobile-close-btn" id="closeMobileMenu" aria-label="Cerrar menú">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                    <path d="M18 6 6 18M6 6l12 12"/>
-                </svg>
-            </button>
-        </li>
-
-        <!-- ═══════ PANEL GENERAL ═══════ -->
+    <ul class="hnav">
         <li><button class="nav-item active" data-key="dash">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
-                <rect x="3" y="3" width="7.5" height="9.5" rx="1.6"/>
-                <rect x="13.5" y="3" width="7.5" height="5.5" rx="1.6"/>
-                <rect x="13.5" y="11.5" width="7.5" height="9.5" rx="1.6"/>
-                <rect x="3" y="15.5" width="7.5" height="5.5" rx="1.6"/>
-            </svg>
-            Panel general
+                <rect x="3" y="3" width="7.5" height="9.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="5.5" rx="1.6"/>
+                <rect x="13.5" y="11.5" width="7.5" height="9.5" rx="1.6"/><rect x="3" y="15.5" width="7.5" height="5.5" rx="1.6"/>
+            </svg>Panel general
         </button></li>
 
-        <!-- ═══════ VENTAS ═══════ -->
         <li class="has-sub">
             <button class="nav-item" data-key="ventas">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.6" cy="7.6" r="1.4"/></svg>
@@ -59,7 +43,6 @@
             </div>
         </li>
 
-        <!-- ═══════ COMPRAS ═══════ -->
         <li class="has-sub">
             <button class="nav-item" data-key="compras">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M3 3h2l2.6 12.4a1.5 1.5 0 0 0 1.5 1.1h8.6a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
@@ -73,7 +56,6 @@
             </div>
         </li>
 
-        <!-- ═══════ INVENTARIO ═══════ -->
         <li class="has-sub">
             <button class="nav-item" data-key="inv">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3.5 7.4v9.2L12 21l8.5-4.4V7.4L12 3Z"/><path d="M3.5 7.4 12 11.8l8.5-4.4"/><path d="M12 11.8V21"/></svg>
@@ -101,7 +83,6 @@
             </div>
         </li>
 
-        <!-- ═══════ CAJA ═══════ -->
         <li class="has-sub">
             <button class="nav-item" data-key="caja">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M20 7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/><path d="M17 13.5h.01"/></svg>
@@ -119,7 +100,6 @@
             </div>
         </li>
 
-        <!-- ═══════ REPORTES ═══════ -->
         <li class="has-sub">
             <button class="nav-item" data-key="rep">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 20.5V11M12 20.5V4M19 20.5v-6.5"/></svg>
@@ -137,7 +117,6 @@
             </div>
         </li>
 
-        <!-- ═══════ ADMINISTRACIÓN ═══════ -->
         <li class="has-sub">
             <button class="nav-item" data-key="admin">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 13.5a7.8 7.8 0 0 0 0-3l2-1.6-2-3.4-2.4 1a7.8 7.8 0 0 0-2.6-1.5L14 2.5h-4l-.4 2.5a7.8 7.8 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.6a7.8 7.8 0 0 0 0 3l-2 1.6 2 3.4 2.4-1a7.8 7.8 0 0 0 2.6 1.5l.4 2.5h4l.4-2.5a7.8 7.8 0 0 0 2.6-1.5l2.4 1 2-3.4Z"/></svg>
@@ -168,8 +147,166 @@
     </div>
 </nav>
 
-<!-- Overlay para móvil -->
-<div class="mobile-overlay" id="mobileOverlay"></div>
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- BLOQUE 2: SIDEBAR OSCURO (Tablet 900-1280px y Móvil < 900px) -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="mobile-menu-wrapper" th:fragment="menu">
+    <!-- Botón Hamburguesa (Solo visible en móvil < 900px) -->
+    <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+
+    <!-- Overlay para móvil (DETRÁS del menú, z-index menor) -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Sidebar Vertical (Tema Oscuro FARO) -->
+    <aside class="sidebar">
+        <!-- Cabecera del Sidebar con botón de cierre -->
+        <div class="sidebar-header">
+            <div class="brand">
+                <div class="mark-sm">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="15.5" r="2.1" fill="#fff" stroke="none"/>
+                        <path d="M8.6 12.1a4.8 4.8 0 0 1 6.8 0"/><path d="M5.9 9.3a8.6 8.6 0 0 1 12.2 0"/>
+                    </svg>
+                </div>
+                <div class="bname"><strong>KAVA</strong><span>ERP SUITE</span></div>
+            </div>
+            <button class="sidebar-close" id="sidebarCloseBtn" aria-label="Cerrar menú">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <nav class="s-nav">
+            <p class="stitle">Principal</p>
+            <button class="sitem active" data-key="dash">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="7.5" height="9.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="5.5" rx="1.6"/><rect x="13.5" y="11.5" width="7.5" height="9.5" rx="1.6"/><rect x="3" y="15.5" width="7.5" height="5.5" rx="1.6"/></svg>
+                <span class="lbl">Panel general</span>
+            </button>
+
+            <p class="stitle">Operación</p>
+
+            <div class="sgroup" id="g-ventas">
+                <button class="sitem grp" data-key="ventas">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.6" cy="7.6" r="1.4"/></svg>
+                    <span class="lbl">Ventas</span>
+                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="sub">
+                    <div class="sub-in">
+                        <button class="sitem sub-it"><span class="lbl">Nueva venta</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Lista de ventas</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Clientes</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Cobranzas</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Cuentas por cobrar</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Pagarés</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Condiciones</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sgroup" id="g-compras">
+                <button class="sitem grp" data-key="compras">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M3 3h2l2.6 12.4a1.5 1.5 0 0 0 1.5 1.1h8.6a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
+                    <span class="lbl">Compras</span>
+                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="sub">
+                    <div class="sub-in">
+                        <button class="sitem sub-it"><span class="lbl">Nueva compra</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Lista de compras</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Proveedores</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sgroup" id="g-inv">
+                <button class="sitem grp" data-key="inv">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3.5 7.4v9.2L12 21l8.5-4.4V7.4L12 3Z"/><path d="M3.5 7.4 12 11.8l8.5-4.4"/><path d="M12 11.8V21"/></svg>
+                    <span class="lbl">Inventario</span>
+                    <em class="mini-badge warn">3</em>
+                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="sub">
+                    <div class="sub-in">
+                        <button class="sitem sub-it"><span class="lbl">Productos</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Ajustar stock</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Lotes y vencimientos</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Transferencias</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Categorías</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Marcas</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Unidades de medida</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Tipos de impuestos</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sgroup" id="g-caja">
+                <button class="sitem grp" data-key="caja">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H5a2 2 0 0 1 0-4h13v4"/><path d="M20 7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/><path d="M17 13.5h.01"/></svg>
+                    <span class="lbl">Caja</span>
+                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="sub">
+                    <div class="sub-in">
+                        <button class="sitem sub-it"><span class="lbl">Abrir / cerrar caja</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Aperturas y cierres</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Movimientos de caja</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Gastos</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Rubros de gastos</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Consumos del personal</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <p class="stitle">Análisis y Sistema</p>
+
+            <div class="sgroup" id="g-rep">
+                <button class="sitem grp" data-key="rep">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 20.5V11M12 20.5V4M19 20.5v-6.5"/></svg>
+                    <span class="lbl">Reportes</span>
+                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="sub">
+                    <div class="sub-in">
+                        <button class="sitem sub-it"><span class="lbl">Ventas</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Compras</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Cobranzas</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Caja e ingresos</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Gastos</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Consumos</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Stock y vencimientos</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Transferencias</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sgroup" id="g-admin">
+                <button class="sitem grp" data-key="admin">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 13.5a7.8 7.8 0 0 0 0-3l2-1.6-2-3.4-2.4 1a7.8 7.8 0 0 0-2.6-1.5L14 2.5h-4l-.4 2.5a7.8 7.8 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.6a7.8 7.8 0 0 0 0 3l-2 1.6 2 3.4 2.4-1a7.8 7.8 0 0 0 2.6 1.5l.4 2.5h4l.4-2.5a7.8 7.8 0 0 0 2.6-1.5l2.4 1 2-3.4Z"/></svg>
+                    <span class="lbl">Administración</span>
+                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="sub">
+                    <div class="sub-in">
+                        <button class="sitem sub-it"><span class="lbl">Usuarios</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Niveles de usuario</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Funcionarios</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Sucursales</span></button>
+                        <button class="sitem sub-it"><span class="lbl">Cajas</span></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="sfoot">
+            <div class="urow">
+                <div class="ava">LM</div>
+                <div class="ut"><strong>Laura Méndez</strong><span>Administradora</span></div>
+            </div>
+        </div>
+    </aside>
+</div>
 
 </body>
 </html>

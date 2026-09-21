@@ -11,7 +11,8 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.example</groupId>
+    <!-- ✅ Actualizado para coincidir con tus paquetes com.erp -->
+    <groupId>com.erp</groupId>
     <artifactId>kava</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>kava</name>
@@ -19,6 +20,9 @@
 
     <properties>
         <java.version>17</java.version>
+        <!-- ✅ CRUCIAL: Esto soluciona el error MalformedInputException -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -34,10 +38,23 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!-- Thymeleaf Layout Dialect (Para plantillas base maestras) -->
+        <!-- Thymeleaf Layout Dialect -->
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Data JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- Conector de MySQL -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- Spring Boot Test -->
@@ -46,6 +63,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

@@ -35,3 +35,11 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+# Ignorar archivo de variables de entorno locales
+.env
+.env.local
+
+# Archivos de propiedades locales (opcional, pero recomendado)
+application-local.properties

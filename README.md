@@ -11,6 +11,20 @@ Aplicación web desarrollada con **Spring Boot** y **Maven**.
 
 ---
 
+## Configuración Inicial 
+###   crea el archivo .env  en la raiz
+
+```bash
+DB_HOST=servidor
+DB_PORT=puerto
+DB_NAME=nombre_base_de_datos
+DB_USER=tu_usuario
+DB_PASSWORD=tu_contraseña_secreta
+```
+
+
+---
+
 ## Ejecutar
 
 Para iniciar la aplicación en modo desarrollo:

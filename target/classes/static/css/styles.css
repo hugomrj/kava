@@ -2,16 +2,12 @@
    1. VARIABLES Y BASE (KAVA)
    ================================================================= */
 :root {
-  /* Colores principales: Verde (primario) y Amarillo/Ámbar (secundario) */
   --color-primary: #2E9E6B;
   --color-primary-dark: #1D7A50;
   --color-primary-light: #E8F5F0;
-
   --color-secondary: #E8A23D;
   --color-secondary-dark: #8A5E12;
   --color-secondary-light: #FFF4E5;
-
-  /* Neutros y soporte */
   --ink: #12242C;
   --ink2: #3C5158;
   --mut: #6B8289;
@@ -20,12 +16,8 @@
   --line: #E2E9E8;
   --card: #FFFFFF;
   --red: #D25B50;
-
-  /* Tipografía */
   --sans: 'IBM Plex Sans', system-ui, sans-serif;
   --disp: 'Space Grotesk', var(--sans);
-
-  /* Sombras */
   --sh-sm: 0 1px 2px rgba(15, 35, 40, 0.06);
   --sh-md: 0 1px 2px rgba(15, 35, 40, 0.05), 0 10px 28px -14px rgba(15, 35, 40, 0.18);
   --sh-lg: 0 2px 4px rgba(15, 35, 40, 0.06), 0 18px 40px -18px rgba(15, 35, 40, 0.28);
@@ -45,7 +37,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 input { font-family: inherit; }
 svg { display: block; }
 
-/* Scrollbar personalizado */
 ::-webkit-scrollbar { width: 9px; height: 9px; }
 ::-webkit-scrollbar-thumb { background: #B9C9C7; border-radius: 8px; border: 2px solid var(--bg); }
 
@@ -127,8 +118,6 @@ svg { display: block; }
   30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
   40%, 60% { transform: translate3d(3px, 0, 0); }
 }
-
-/* Animación de entrada (rise) */
 .rise {
   opacity: 0;
   transform: translateY(14px);
@@ -138,7 +127,7 @@ svg { display: block; }
 @keyframes rise { to { opacity: 1; transform: none; } }
 
 /* =================================================================
-   3. TOP NAVBAR
+   3. TOP NAVBAR & BRAND
    ================================================================= */
 .topnav {
   flex: 0 0 64px;
@@ -180,7 +169,7 @@ svg { display: block; }
 .mobile-toggle:hover { background: var(--color-primary-light); color: var(--color-primary-dark); }
 
 /* =================================================================
-   4. MENÚ HORIZONTAL (DESKTOP - HOVER)
+   4. MENÚ HORIZONTAL (DESKTOP > 1280px)
    ================================================================= */
 .hnav {
   display: flex;
@@ -207,7 +196,6 @@ svg { display: block; }
 .hnav .nav-item > svg:first-child { width: 17px; height: 17px; opacity: 0.8; }
 .hnav .nav-item:hover { background: #EDF3F2; color: var(--ink); transform: translateY(-1px); }
 
-/* Línea verde inferior (ACTIVE) */
 .hnav .nav-item::after {
   content: '';
   position: absolute;
@@ -236,10 +224,8 @@ svg { display: block; }
   color: var(--color-secondary-dark);
   box-shadow: inset 0 0 0 1px rgba(232, 162, 61, 0.45);
 }
-
 .chev { width: 13px !important; height: 13px !important; opacity: 0.7; transition: transform 0.25s; }
 
-/* SUBMENÚS - HOVER para abrir/cerrar */
 .submenu {
   position: absolute;
   top: calc(100% + 10px);
@@ -256,7 +242,6 @@ svg { display: block; }
   pointer-events: none;
   transition: 0.22s;
 }
-/* Puente invisible: permite mover el mouse del botón al submenú sin cerrarlo */
 .submenu::before {
   content: '';
   position: absolute;
@@ -291,7 +276,6 @@ svg { display: block; }
 .mlbl { flex: 1; text-align: left; }
 .msep { display: block; height: 1px; background: #EEF3F2; margin: 5px 8px; }
 
-/* Nivel 2 (fly) - Cascada lateral */
 .submenu .has-fly { position: relative; }
 .farr { width: 13px; height: 13px; color: #9DB0B4; transition: 0.15s; flex: 0 0 auto; }
 .has-fly:hover > button .farr { color: var(--color-primary); }
@@ -331,7 +315,6 @@ svg { display: block; }
    5. TOOLS & USER
    ================================================================= */
 .tools { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; margin-left: auto; }
-
 .search {
   display: flex;
   align-items: center;
@@ -414,7 +397,6 @@ svg { display: block; }
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  /* Fondo con grid sutil y gradientes radiales (del patrón original) */
   background:
     radial-gradient(1100px 460px at 88% -8%, rgba(46, 158, 107, 0.09), transparent 62%),
     radial-gradient(800px 400px at -8% 108%, rgba(232, 162, 61, 0.08), transparent 60%),
@@ -425,7 +407,6 @@ svg { display: block; }
 }
 .content-inner { max-width: 1440px; margin: 0 auto; padding: 26px 30px 40px; }
 
-/* Page head */
 .page-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; margin-bottom: 20px; }
 .mode-tag {
   display: inline-block;
@@ -441,7 +422,6 @@ svg { display: block; }
 .page-head h1 { font: 700 30px var(--disp); letter-spacing: -0.8px; line-height: 1.05; }
 .page-head .sub { font: 400 13.5px var(--sans); color: var(--mut); margin-top: 6px; }
 
-/* Period selector */
 .period { display: inline-flex; gap: 2px; background: #E2EAE9; border-radius: 9px; padding: 3px; margin-top: 14px; }
 .period button { padding: 6px 14px; border-radius: 7px; font: 600 12px var(--sans); color: var(--ink2); transition: 0.18s; }
 .period button:hover { color: var(--ink); }
@@ -449,7 +429,6 @@ svg { display: block; }
 
 .ph-right { display: flex; gap: 10px; padding-top: 26px; }
 
-/* Botones */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -471,7 +450,7 @@ svg { display: block; }
 .link:hover { background: var(--color-primary-light); transform: translateX(2px); }
 
 /* =================================================================
-   7. KPIs (con hover lift y barra lateral)
+   7. KPIs, CARDS, GRÁFICOS Y TABLAS (Resumido para brevedad, mantiene tu estilo)
    ================================================================= */
 .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 18px; }
 .kpi {
@@ -484,7 +463,6 @@ svg { display: block; }
   position: relative;
   overflow: hidden;
 }
-/* Barra lateral de color que aparece en hover */
 .kpi::after {
   content: '';
   position: absolute;
@@ -506,12 +484,8 @@ svg { display: block; }
 .delta.down { color: #B04438; background: rgba(210, 91, 80, 0.13); }
 .delta.warnc { color: var(--color-secondary-dark); background: rgba(232, 162, 61, 0.16); }
 .num { font: 700 29px var(--disp); letter-spacing: -1.2px; margin: 8px 0 10px; }
-.spark svg { width: 104px; height: 30px; }
 .cap { font: 400 11px var(--sans); color: #93A6AB; margin-top: 7px; }
 
-/* =================================================================
-   8. CARDS, CHIPS Y GRÁFICOS
-   ================================================================= */
 .card {
   background: var(--card);
   border: 1px solid var(--line);
@@ -536,12 +510,10 @@ svg { display: block; }
 .lchip { display: inline-flex; align-items: center; gap: 6px; font: 500 11.5px var(--sans); color: #54707A; }
 .lchip i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
 
-/* Grid layouts */
 .grid-mid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 18px; }
 .grid-bot { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
 .side-col { display: flex; flex-direction: column; gap: 16px; }
 
-/* Gráfico de barras */
 .bars-wrap { padding: 20px 18px 14px; }
 .bars {
   display: flex;
@@ -588,7 +560,6 @@ svg { display: block; }
 }
 .pair:hover .tip { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* Donut chart */
 .donut-wrap { display: flex; align-items: center; gap: 20px; padding: 20px 18px; }
 .donut-box { position: relative; width: 158px; height: 158px; flex: 0 0 auto; }
 .donut-box svg { width: 100%; height: 100%; }
@@ -602,9 +573,6 @@ svg { display: block; }
 .legend .pct { margin-left: auto; font: 700 12.5px var(--disp); }
 .legend .val { font: 400 11.5px var(--sans); color: var(--mut); width: 56px; text-align: right; }
 
-/* =================================================================
-   9. TABLA DE ÓRDENES
-   ================================================================= */
 .tscroll { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; min-width: 560px; }
 th {
@@ -624,7 +592,6 @@ tbody tr:hover td { background: #F6FAF9; }
 .mut { color: var(--mut); }
 .amt { font: 600 13px var(--disp); letter-spacing: -0.3px; }
 
-/* Pills de estado */
 .pill {
   display: inline-flex;
   align-items: center;
@@ -654,9 +621,6 @@ tbody tr:hover td { background: #F6FAF9; }
 }
 .dots:hover { background: #E9F1F0; color: var(--ink); }
 
-/* =================================================================
-   10. FEED DE ACTIVIDAD Y TAREAS
-   ================================================================= */
 .feed { list-style: none; padding: 8px 18px 12px; }
 .feed li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px dashed #EDF2F1; }
 .feed li:last-child { border: none; }
@@ -693,307 +657,330 @@ tbody tr:hover td { background: #F6FAF9; }
 
 
 
+
 /* =================================================================
-   11. RESPONSIVE - MÓVIL (DRAWER LATERAL)
+   8. RESPONSIVE UNIFICADO: HORIZONTAL vs SIDEBAR OSCURO
    ================================================================= */
+
+/* --- BASE: Ocultar elementos de móvil por defecto --- */
+.mobile-toggle, .mobile-overlay { display: none; }
+
+/* --- DESKTOP (> 1280px): Mostrar solo el Menú Horizontal --- */
+.desktop-nav { display: flex; }
+.mobile-menu-wrapper { display: none; }
+.content { margin-left: 0; }
+
+/* --- TABLET / LAPTOP (<= 1280px): Mostrar solo Sidebar Oscuro Fijo --- */
 @media (max-width: 1280px) {
+  .desktop-nav { display: none !important; }
+  .mobile-menu-wrapper { display: block !important; }
+
+  .sidebar {
+    display: flex !important;
+    flex: 0 0 260px;
+    flex-direction: column;
+    background: linear-gradient(180deg, #103038, #0A1D23);
+    color: #C6D8DA;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 40;
+    border-right: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .content { margin-left: 260px; }
+
+  .s-top { padding: 18px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .s-top .bname strong { color: #fff; }
+  .s-top .bname span { color: #6E8B90; }
+
+  .s-nav { flex: 1; overflow-y: auto; padding: 12px; }
+  .s-nav::-webkit-scrollbar { width: 5px; }
+  .s-nav::-webkit-scrollbar-thumb { background: #27454D; border-radius: 4px; }
+
+  .stitle { font: 700 10px var(--disp); letter-spacing: 2px; color: #5E7E85; padding: 16px 10px 8px; }
+
+  .sitem {
+    position: relative; display: flex; align-items: center; gap: 11px; width: 100%;
+    padding: 10px 12px; border-radius: 9px; font: 500 13.5px var(--sans);
+    color: #B9CDCF; transition: 0.18s; text-align: left;
+  }
+  .sitem svg { width: 17px; height: 17px; flex: 0 0 auto; opacity: 0.85; }
+  .sitem:hover { background: rgba(255,255,255,0.06); color: #fff; transform: translateX(2px); }
+  .sitem.active {
+    background: linear-gradient(90deg, rgba(46,158,107,0.25), rgba(46,158,107,0.05));
+    color: #fff;
+  }
+  .sitem.active::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px;
+    border-radius: 0 3px 3px 0; background: var(--color-secondary);
+  }
+
+  .sgroup.open .sitem.grp .chev { transform: rotate(180deg); }
+  .sub { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+  .sgroup.open .sub { grid-template-rows: 1fr; }
+  .sub-in { overflow: hidden; min-height: 0; }
+  .sub-it { padding: 8px 12px 8px 46px; font-size: 13px; color: #93ACB1; justify-content: flex-start; }
+  .sub-it::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #3E5C63; flex: 0 0 auto; transition: 0.18s; }
+  .sub-it:hover::before, .sub-it.active::before { background: var(--color-secondary); }
+  .sub-it.active { color: #fff; background: rgba(255,255,255,0.05); }
+
+  .sfoot { padding: 16px; border-top: 1px solid rgba(255,255,255,0.07); }
+  .urow { display: flex; align-items: center; gap: 10px; }
+  .urow .ut strong { font: 600 12.5px var(--sans); color: #fff; display: block; }
+  .urow .ut span { font: 400 10.5px var(--sans); color: #7E989E; }
+
+  /* Ajustes de layout para tablet */
   .kpis { grid-template-columns: repeat(2, 1fr); }
   .grid-mid, .grid-bot { grid-template-columns: 1fr; }
   .search input { width: 150px; }
 }
 
 
-/* =================================================================
-   RESPONSIVE - TABLET/LAPTOP (900px - 1280px)
-   Menú horizontal con scroll
-   ================================================================= */
-@media (min-width: 900px) and (max-width: 1279px) {
-  /* Menú con scroll horizontal */
-  .hnav {
-    overflow-x: auto;
-    overflow-y: visible;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    scroll-behavior: smooth;
-    padding-right: 20px; /* Espacio para que el último item no quede pegado */
-  }
-
-  .hnav::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-  }
-
-  /* Items con padding reducido para aprovechar espacio */
-  .hnav .nav-item {
-    padding: 9px 10px;
-    font-size: 13px;
-  }
-
-  /* Submenús siguen funcionando con hover (igual que desktop) */
-  .submenu {
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    min-width: 242px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    box-shadow: var(--sh-lg);
-    padding: 6px;
-    z-index: 40;
-    opacity: 0;
-    transform: translateY(8px);
-    pointer-events: none;
-    transition: 0.22s;
-  }
-
-  .has-sub:hover > .submenu {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  /* Flyouts también funcionan con hover */
-  .fly {
-    position: absolute;
-    top: -7px;
-    left: calc(100% + 6px);
-    min-width: 224px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    box-shadow: var(--sh-lg);
-    padding: 6px;
-    z-index: 45;
-    opacity: 0;
-    transform: translateX(8px);
-    pointer-events: none;
-    transition: 0.2s;
-  }
-
-  .has-fly:hover > .fly {
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-  }
-
-  /* Indicador visual de scroll (opcional - flecha sutil a la derecha) */
-  .hnav::after {
-    content: '';
-    position: sticky;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 40px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.9));
-    pointer-events: none;
-    z-index: 10;
-  }
-}
 
 
+/* --- MÓVIL (<= 900px): Sidebar se convierte en Drawer Deslizable --- */
 
-
-
-
-
-
-
-
+/* --- MÓVIL (<= 900px): Sidebar se convierte en Drawer Deslizable --- */
 @media (max-width: 900px) {
-  .mobile-toggle { display: grid; }
+  .content { margin-left: 0 !important; }
 
-  /* Overlay: SIN blur, solo fondo oscuro */
+  .mobile-toggle {
+    display: grid; width: 38px; height: 38px; border-radius: 10px; place-items: center;
+    color: var(--ink2); border: 1px solid transparent; transition: 0.2s;
+  }
+  .mobile-toggle:hover { background: var(--color-primary-light); color: var(--color-primary-dark); }
+
   .mobile-overlay {
-    position: fixed;
-    inset: 64px 0 0 0;
-    background: rgba(18, 36, 44, 0.5);
-    z-index: 49;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+    display: block; position: fixed; inset: 0; background: rgba(18, 36, 44, 0.6);
+    z-index: 49; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
   }
   .mobile-overlay.active { opacity: 1; pointer-events: auto; }
 
-  /* Drawer: BLANCO PURO, SIN BLUR, SIN TRANSPARENCIA */
-  .hnav {
-    position: fixed;
-    top: 64px;
-    left: -100%;
-    width: 85%;
-    max-width: 300px;
-    height: calc(100dvh - 64px);
-    background: #FFFFFF !important;
-    border-right: 1px solid #E2E9E8;
-    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-    gap: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+  .sidebar {
+    left: -100%; width: 85%; max-width: 300px; height: 100dvh;
     transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 50;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
   }
-  .hnav.mobile-open { left: 0; }
+  .sidebar.mobile-open { left: 0; }
 
-  /* Forzar todos los elementos internos a ser nítidos y blancos */
-  .hnav.mobile-open,
-  .hnav.mobile-open *,
-  .hnav.mobile-open *::before,
-  .hnav.mobile-open *::after {
-    opacity: 1 !important;
-    filter: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
+  /* Ajustes de layout para móvil */
+  .kpis { grid-template-columns: 1fr; }
+  .page-head { flex-direction: column; }
+  .ph-right { padding-top: 0; width: 100%; }
+  .ph-right .btn { flex: 1; justify-content: center; }
+  .search { display: none; }
+  .user .uname { display: none; }
+}
 
-  /* Header del drawer con botón X integrado */
-  .mobile-close-header {
-    display: flex !important;
-    justify-content: flex-end;
-    padding: 12px 16px;
-    border-bottom: 1px solid #E2E9E8;
-    background: #FFFFFF !important;
-  }
-  .mobile-close-btn {
-    width: 36px; height: 36px; border-radius: 8px;
-    display: grid; place-items: center; color: #3C5158;
-    background: #F8FAF9; border: 1px solid #E2E9E8;
-    transition: 0.2s;
-  }
-  .mobile-close-btn:hover { background: #E8F5F0; color: #1D7A50; }
 
-  /* Items del menú */
-  .hnav > li {
-    width: 100%;
-    border-bottom: 1px solid #E2E9E8;
-    background: #FFFFFF !important;
-  }
-  .hnav > li:last-child { border-bottom: none; }
 
-  .hnav .nav-item {
-    width: 100%;
+/* =================================================================
+   9. CORRECCIONES MÓVIL - OVERLAY Y CABECERA
+   ================================================================= */
+
+/* Overlay DEBE estar detrás del menú (z-index menor) */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 36, 44, 0.6);
+    z-index: 49; /* MENOR que el sidebar */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.mobile-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Sidebar DEBE estar encima del overlay (z-index mayor) */
+.sidebar {
+    z-index: 50; /* MAYOR que el overlay */
+}
+
+/* Cabecera del Sidebar (nueva) */
+.sidebar-header {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
-    border-radius: 0;
-    font-size: 14px;
-    color: #12242C !important;
-    background: #FFFFFF !important;
-    font-weight: 500;
-  }
-  .hnav .nav-item > svg {
+    padding: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: linear-gradient(180deg, #103038, #0d2830);
+}
+
+.sidebar-header .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    color: #C6D8DA;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.sidebar-close:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.sidebar-close svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 900px) {
+    .sidebar {
+        z-index: 50; /* Asegurar que esté encima */
+    }
+
+    .sidebar-header {
+        display: flex; /* Siempre visible en móvil */
+    }
+
+    /* Asegurar que el contenido sea clickeable */
+    .content {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+
+
+
+/* =================================================================
+   10. NAVBAR MEJORADO PARA MÓVIL
+   ================================================================= */
+
+/* Navbar móvil mejorado */
+.mobile-navbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--sh-sm);
+    z-index: 45; /* Entre el contenido y el sidebar */
+    padding: 0 16px;
+}
+
+.mobile-navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 12px;
+}
+
+.mobile-navbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+
+.mobile-navbar .mark-sm {
+    width: 32px;
+    height: 32px;
+}
+
+.mobile-navbar .mark-sm svg {
     width: 18px;
     height: 18px;
-    stroke: #12242C !important;
-    opacity: 0.8 !important;
-  }
-  .hnav .nav-item::after { display: none; }
-  .hnav .nav-item:hover {
-    transform: none;
-    background: #F8FAF9 !important;
-  }
-  .hnav .nav-item.active {
-    background: #E8F5F0 !important;
-    color: #1D7A50 !important;
-    border-left: 3px solid #2E9E6B;
-    padding-left: 17px;
-    font-weight: 600;
-  }
-  .hnav .nav-item.active > svg {
-    stroke: #1D7A50 !important;
-  }
-
-  /* Submenús acordeón */
-  .submenu {
-    position: static;
-    opacity: 1 !important;
-    transform: none;
-    pointer-events: auto;
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    min-width: 100%;
-    background: #F8FAF9 !important;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-  }
-  .submenu.mobile-active { max-height: 1000px; }
-
-  .submenu button {
-    padding: 12px 20px 12px 48px;
-    border-radius: 0;
-    border-bottom: 1px solid #E2E9E8;
-    font-size: 13px;
-    color: #3C5158 !important;
-    background: #F8FAF9 !important;
-  }
-  .submenu button > svg {
-    width: 15px;
-    height: 15px;
-    stroke: #3C5158 !important;
-    opacity: 0.7 !important;
-  }
-  .submenu button:last-child { border-bottom: none; }
-  .submenu button:hover { background: #E8F5F0 !important; transform: none; }
-
-  /* Fly (nivel 2) */
-  .fly {
-    position: static;
-    opacity: 1 !important;
-    transform: none;
-    pointer-events: auto;
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    min-width: 100%;
-    background: #F1F5F4 !important;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-  }
-  .fly.mobile-active { max-height: 1000px; }
-  .fly button {
-    padding: 10px 20px 10px 68px;
-    font-size: 12.5px;
-    color: #3C5158 !important;
-    background: #F1F5F4 !important;
-  }
-
-  .msep { display: none; }
-
-  /* Flechas */
-  .chev, .farr { transition: transform 0.35s ease; }
-  .has-sub.mobile-active > .nav-item .chev { transform: rotate(180deg); }
-  .has-fly.mobile-active > button .farr { transform: rotate(-90deg); }
-
-  .user .uname { display: none; }
-  .search { display: none; }
 }
 
-
-
-
-
-
-@media (max-width: 680px) {
-  .kpis { grid-template-columns: 1fr; }
-  .page-head { flex-direction: column; }
-  .ph-right { padding-top: 0; width: 100%; }
-  .ph-right .btn { flex: 1; justify-content: center; }
+.mobile-navbar .bname strong {
+    font-size: 15px;
 }
 
+.mobile-navbar .bname span {
+    font-size: 7px;
+    letter-spacing: 1.8px;
+}
 
+.mobile-navbar .page-title {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+}
 
+.mobile-navbar .page-title h1 {
+    font: 600 15px var(--disp);
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    letter-spacing: -0.3px;
+}
 
+.mobile-navbar .page-title span {
+    font: 400 11px var(--sans);
+    color: var(--mut);
+    display: block;
+    margin-top: -2px;
+}
 
+.mobile-navbar .tools-mobile {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 0 0 auto;
+}
 
+.mobile-navbar .icon-btn {
+    width: 36px;
+    height: 36px;
+}
 
-@media (max-width: 680px) {
-  .kpis { grid-template-columns: 1fr; }
-  .page-head { flex-direction: column; }
-  .ph-right { padding-top: 0; width: 100%; }
-  .ph-right .btn { flex: 1; justify-content: center; }
+.mobile-navbar .icon-btn svg {
+    width: 17px;
+    height: 17px;
+}
+
+/* Mostrar navbar en móvil */
+@media (max-width: 900px) {
+    .mobile-navbar {
+        display: block;
+    }
+
+    /* Ajustar contenido para que no quede detrás del navbar */
+    .content {
+        padding-top: 64px;
+    }
+
+    .page-head {
+        margin-top: 0;
+        padding-top: 20px;
+    }
+}
+
+/* En tablet (900-1280px) no mostramos el navbar móvil porque tenemos sidebar fijo */
+@media (min-width: 901px) and (max-width: 1280px) {
+    .mobile-navbar {
+        display: none;
+    }
+
+    .content {
+        padding-top: 0;
+    }
 }

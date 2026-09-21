@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- El título se combinará: "Título de la página - KAVA ERP" -->
-    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">KAVA ERP</title>
-
+    <title layout:title-pattern="$CONTENT_TITLE - KAVA ERP">KAVA ERP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -15,21 +13,61 @@
 </head>
 <body>
 
-<!-- 1. AQUÍ SE INYECTA EL MENÚ (compartido por todas las páginas) -->
-<div th:replace="~{fragments/menu :: main-menu}"></div>
+<!-- NAVBAR MÓVIL MEJORADO (Solo visible en < 900px) -->
+<nav class="mobile-navbar" th:if="${true}">
+    <div class="mobile-navbar-inner">
+        <!-- Izquierda: Botón menú + Logo -->
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Abrir menú" style="margin: 0;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+            <div class="brand">
+                <div class="mark-sm">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="15.5" r="2.1" fill="#fff" stroke="none"/>
+                        <path d="M8.6 12.1a4.8 4.8 0 0 1 6.8 0"/><path d="M5.9 9.3a8.6 8.6 0 0 1 12.2 0"/>
+                    </svg>
+                </div>
+                <div class="bname"><strong>KAVA</strong><span>ERP</span></div>
+            </div>
+        </div>
 
-<!-- 2. AQUÍ SE INYECTARÁ EL CONTENIDO ESPECÍFICO DE CADA VISTA (Dashboard, Ventas, etc.) -->
+        <!-- Centro: Título de página (dinámico) -->
+        <div class="page-title" th:if="${false}">
+            <h1>Panel general</h1>
+            <span>Resumen</span>
+        </div>
+
+        <!-- Derecha: Iconos rápidos -->
+        <div class="tools-mobile">
+            <button class="icon-btn" aria-label="Buscar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                    <circle cx="11" cy="11" r="6.2"/>
+                    <path d="m20 20-3.4-3.4"/>
+                </svg>
+            </button>
+            <button class="icon-btn" id="bellBtn" aria-label="Notificaciones">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9.5a6 6 0 0 1 12 0c0 4.8 1.8 5.9 1.8 5.9H4.2S6 14.3 6 9.5"/>
+                    <path d="M10 19.4a2.3 2.3 0 0 0 4 0"/>
+                </svg>
+                <span class="bdg">4</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- AQUÍ SE INYECTA EL MENÚ UNIFICADO -->
+<div th:replace="~{fragments/menu :: menu}"></div>
+
+<!-- CONTENIDO PRINCIPAL -->
 <main class="content" layout:fragment="content">
-    <!-- Este bloque será reemplazado por el contenido de dashboard.html -->
+    <!-- El dashboard u otras vistas se inyectarán aquí -->
 </main>
 
-<!-- 3. SCRIPTS GLOBALES (se cargan en todas las páginas) -->
+<!-- SCRIPTS GLOBALES -->
 <script th:src="@{/js/menu-ui.js}"></script>
-
-<!-- 4. PLACEHOLDER PARA SCRIPTS ESPECÍFICOS DE CADA VISTA -->
-<th:block layout:fragment="scripts">
-    <!-- Si la vista hija necesita scripts extra (como dashboard.js), los inyectará aquí -->
-</th:block>
+<th:block layout:fragment="scripts"></th:block>
 
 </body>
 </html>
