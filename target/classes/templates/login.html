@@ -47,39 +47,36 @@
 </div>
 
 <script>
+
+
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
-        e.preventDefault(); // Evita la recarga tradicional de la página
+        e.preventDefault();
 
         const submitBtn = document.getElementById('submitBtn');
         const errorDiv = document.getElementById('error-message');
         const errorText = document.getElementById('error-text');
         const originalBtnText = submitBtn.innerHTML;
 
-        // 1. Estado de carga
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span>Verificando...</span>';
         errorDiv.style.display = 'none';
 
-        // 2. Enviar datos al backend
         const formData = new FormData(this);
 
         try {
             const response = await fetch('/auth/login', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                credentials: 'include' // <-- 5. AGREGAR ESTA LÍNEA (Obligatorio para sesiones)
             });
 
             const data = await response.json();
 
-            // 3. Manejar la respuesta
             if (data.success) {
-                window.location.href = data.redirectUrl; // Redirección limpia
+                window.location.href = data.redirectUrl;
             } else {
-                // Mostrar el mensaje de error que vino del JSON
                 errorText.innerText = data.message;
                 errorDiv.style.display = 'flex';
-
-                // Restaurar botón
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
             }
@@ -91,6 +88,9 @@
             submitBtn.innerHTML = originalBtnText;
         }
     });
+
+
+
 </script>
 </body>
 </html>

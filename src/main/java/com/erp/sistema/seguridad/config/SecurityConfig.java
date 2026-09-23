@@ -58,7 +58,7 @@ public class SecurityConfig {
                                 "/js/**",
                                 "/admin/**"
                         ).permitAll()
-                        .anyRequest().authenticated() // Todo lo demás requiere login
+                        .anyRequest().authenticated()
                 )
 
                 // 4. Desactivar formularios y popups por defecto de Spring
