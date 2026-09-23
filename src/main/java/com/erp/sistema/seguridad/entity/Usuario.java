@@ -1,5 +1,6 @@
 package com.erp.sistema.seguridad.entity;
 
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,11 +11,11 @@ public class Usuario {
     @Column(name = "Codigo")
     private Integer codigo;
 
-    @Column(name = "codigo_niveles", insertable = false, updatable = false)
+    @Column(name = "CodigoNiveles", insertable = false, updatable = false)
     private Integer codigoNiveles;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "codigo_niveles")
+    @JoinColumn(name = "CodigoNiveles")
     private NivelUsuario nivel;
 
     @Column(name = "Estado")
@@ -38,84 +39,35 @@ public class Usuario {
     @Column(name = "password")
     private String password;
 
-    public Integer getCodigo() {
-        return codigo;
-    }
+    // --- GETTERS Y SETTERS ---
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
+    public Integer getCodigo() { return codigo; }
+    public void setCodigo(Integer codigo) { this.codigo = codigo; }
 
-    public Integer getCodigoNiveles() {
-        return codigoNiveles;
-    }
+    public Integer getCodigoNiveles() { return codigoNiveles; }
+    public void setCodigoNiveles(Integer codigoNiveles) { this.codigoNiveles = codigoNiveles; }
 
-    public void setCodigoNiveles(Integer codigoNiveles) {
-        this.codigoNiveles = codigoNiveles;
-    }
+    public NivelUsuario getNivel() { return nivel; }
+    public void setNivel(NivelUsuario nivel) { this.nivel = nivel; }
 
-    public NivelUsuario getNivel() {
-        return nivel;
-    }
+    public Integer getEstado() { return estado; }
+    public void setEstado(Integer estado) { this.estado = estado; }
 
-    public void setNivel(NivelUsuario nivel) {
-        this.nivel = nivel;
-    }
+    public String getCi() { return ci; }
+    public void setCi(String ci) { this.ci = ci; }
 
-    public Integer getEstado() {
-        return estado;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public void setEstado(Integer estado) {
-        this.estado = estado;
-    }
+    public String getApellido() { return apellido; }
+    public void setApellido(String apellido) { this.apellido = apellido; }
 
-    public String getCi() {
-        return ci;
-    }
+    public String getCelular() { return celular; }
+    public void setCelular(String celular) { this.celular = celular; }
 
-    public void setCi(String ci) {
-        this.ci = ci;
-    }
+    public String getUsuario() { return usuario; }
+    public void setUsuario(String usuario) { this.usuario = usuario; }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 }
-

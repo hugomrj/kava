@@ -137,13 +137,30 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5a6 6 0 0 1 12 0c0 4.8 1.8 5.9 1.8 5.9H4.2S6 14.3 6 9.5"/><path d="M10 19.4a2.3 2.3 0 0 0 4 0"/></svg>
             <span class="bdg">4</span>
         </button>
+
+
         <div class="user">
-            <div class="ava">LM</div>
-            <div class="uname"><strong>Laura Méndez</strong><span>Administradora</span></div>
+            <!-- Toma las 2 primeras letras del nombre y las pone en mayúsculas -->
+            <div class="ava" th:text="${#strings.substring(usuario.nombreCompleto, 0, 2).toUpperCase()}">LM</div>
+            <div class="uname">
+                <strong th:text="${usuario.nombreCompleto}">Laura Méndez</strong>
+                <span th:text="${usuario.rol}">Administradora</span>
+            </div>
         </div>
-        <button hx-post="/auth/logout" hx-target="body" class="btn btn-ghost" style="margin-left: 10px; padding: 8px 12px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
-        </button>
+
+
+        <!-- Formulario nativo de Spring Security para Logout -->
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <button type="submit" class="icon-btn" aria-label="Cerrar sesión" style="color: var(--red);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <path d="M16 17l5-5-5-5"/>
+                    <path d="M21 12H9"/>
+                </svg>
+            </button>
+        </form>
+
+
     </div>
 </nav>
 
@@ -299,12 +316,32 @@
             </div>
         </nav>
 
+
         <div class="sfoot">
-            <div class="urow">
-                <div class="ava">LM</div>
-                <div class="ut"><strong>Laura Méndez</strong><span>Administradora</span></div>
+            <!-- Usuario -->
+            <div class="urow" style="margin-bottom: 12px;">
+                <div class="ava" th:text="${#strings.substring(usuario.nombreCompleto, 0, 2).toUpperCase()}">AD</div>
+                <div class="ut">
+                    <strong th:text="${usuario.nombreCompleto}">ADMIN ADMIN</strong>
+                    <span th:text="${usuario.rol}">Sin Rol</span>
+                </div>
             </div>
+
+            <!-- Botón Logout con el icono correcto -->
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="sitem" style="color: var(--red); width: 100%;">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                        <path d="M16 17l5-5-5-5"/>
+                        <path d="M21 12H9"/>
+                    </svg>
+                    <span>Cerrar sesión</span>
+                </button>
+            </form>
         </div>
+
+
+
     </aside>
 </div>
 

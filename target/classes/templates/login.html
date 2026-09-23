@@ -9,6 +9,56 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body class="login-body">
+
+<!-- ================================================================= -->
+<!-- CONTENEDOR DE TOASTS (Flotante, fuera de la tarjeta de login)     -->
+<!-- ================================================================= -->
+<div class="toast-container">
+
+    <!-- 1. Toast de ERROR (Se muestra si la URL tiene ?error) -->
+    <div th:if="${param.error}" class="toast error">
+        <div class="toast-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4M12 16h.01"/>
+            </svg>
+        </div>
+        <div class="toast-content">
+            <div class="toast-title">Error de acceso</div>
+            <div class="toast-message">Usuario o contraseña incorrectos.</div>
+        </div>
+        <button class="toast-close" onclick="this.parentElement.remove()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="toast-progress"></div>
+    </div>
+
+    <!-- 2. Toast de LOGOUT (Se muestra si la URL tiene ?logout) -->
+    <div th:if="${param.logout}" class="toast success">
+        <div class="toast-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m5 12.5 4.5 4.5L19 7"/>
+            </svg>
+        </div>
+        <div class="toast-content">
+            <div class="toast-title">Sesión cerrada</div>
+            <div class="toast-message">Has salido del sistema correctamente.</div>
+        </div>
+        <button class="toast-close" onclick="this.parentElement.remove()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="toast-progress"></div>
+    </div>
+
+</div>
+
+<!-- ================================================================= -->
+<!-- TARJETA DE LOGIN                                                  -->
+<!-- ================================================================= -->
 <div class="login-card">
     <div class="login-header">
         <div class="mark">
@@ -21,16 +71,7 @@
         <p>ERP SUITE</p>
     </div>
 
-    <!-- Contenedor de error (oculto por defecto) -->
-    <div id="error-message" class="alert" style="display: none; color: #dc3545; background: #f8d7da; padding: 10px; border-radius: 4px; margin-bottom: 15px; font-size: 0.9em; display: flex; align-items: center; gap: 8px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 8v4M12 16h.01"/>
-        </svg>
-        <span id="error-text">Credenciales incorrectas.</span>
-    </div>
-
-    <form id="loginForm">
+    <form th:action="@{/login}" method="post" onsubmit="document.getElementById('submitBtn').disabled = true; document.getElementById('submitBtn').innerHTML = '<span>Verificando...</span>';">
         <div class="form-group">
             <label for="username">Usuario</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="admin" required autocomplete="username">
@@ -39,6 +80,7 @@
             <label for="password">Contraseña</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
         </div>
+
         <button type="submit" class="btn-login" id="submitBtn">
             <span>Ingresar al sistema</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -46,51 +88,7 @@
     </form>
 </div>
 
-<script>
-
-
-    document.getElementById('loginForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        const submitBtn = document.getElementById('submitBtn');
-        const errorDiv = document.getElementById('error-message');
-        const errorText = document.getElementById('error-text');
-        const originalBtnText = submitBtn.innerHTML;
-
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Verificando...</span>';
-        errorDiv.style.display = 'none';
-
-        const formData = new FormData(this);
-
-        try {
-            const response = await fetch('/auth/login', {
-                method: 'POST',
-                body: formData,
-                credentials: 'include' // <-- 5. AGREGAR ESTA LÍNEA (Obligatorio para sesiones)
-            });
-
-            const data = await response.json();
-
-            if (data.success) {
-                window.location.href = data.redirectUrl;
-            } else {
-                errorText.innerText = data.message;
-                errorDiv.style.display = 'flex';
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-            }
-        } catch (error) {
-            console.error('Error de red:', error);
-            errorText.innerText = 'Error de conexión con el servidor.';
-            errorDiv.style.display = 'flex';
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
-        }
-    });
-
-
-
-</script>
+<!-- Script global de UX (Toasts, Menú, etc.) -->
+<script th:src="@{/js/ux.js}"></script>
 </body>
 </html>

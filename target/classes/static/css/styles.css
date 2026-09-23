@@ -1,4 +1,4 @@
-/* =================================================================
+    /* =================================================================
    1. VARIABLES Y BASE (KAVA)
    ================================================================= */
 :root {
@@ -983,4 +983,84 @@ tbody tr:hover td { background: #F6FAF9; }
     .content {
         padding-top: 0;
     }
+}
+
+
+
+
+
+
+/* =================================================================
+   11. TOAST NOTIFICATIONS (KAVA - Tono Suave)
+   ================================================================= */
+.toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 400px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  box-shadow: var(--sh-md);
+  animation: slideIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  border: 1px solid transparent; /* Sin bordes de color */
+}
+
+/* Fondo pastel para éxito */
+.toast.success {
+  background: var(--color-primary-light);
+  border-color: rgba(46, 158, 107, 0.2);
+}
+.toast.success .toast-icon { color: var(--color-primary); }
+.toast.success .toast-title { color: var(--color-primary-dark); }
+
+/* Fondo pastel para error */
+.toast.error {
+  background: rgba(210, 91, 80, 0.08);
+  border-color: rgba(210, 91, 80, 0.15);
+}
+.toast.error .toast-icon { color: var(--red); }
+.toast.error .toast-title { color: #B04438; }
+
+.toast-icon {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+}
+.toast-icon svg { width: 18px; height: 18px; }
+
+.toast-content { flex: 1; }
+.toast-title { font: 600 13px var(--sans); margin-bottom: 2px; }
+.toast-message { font: 400 12.5px var(--sans); color: var(--ink2); }
+
+.toast-close {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  color: inherit;
+  opacity: 0.6;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.toast-close:hover { opacity: 1; background: rgba(0,0,0,0.05); }
+.toast-close svg { width: 14px; height: 14px; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
 }

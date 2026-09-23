@@ -5,6 +5,7 @@ com/erp/sistema/seguridad/entity/Usuario.class
 com/erp/dashboard/controller/DashboardController.class
 com/erp/Application.class
 com/erp/sistema/seguridad/controller/LoginController.class
+com/erp/sistema/seguridad/dto/UsuarioDTO.class
+com/erp/sistema/seguridad/service/UsuarioService.class
 com/erp/sistema/seguridad/entity/NivelUsuario.class
-com/erp/sistema/seguridad/controller/AuthController.class
 com/erp/sistema/seguridad/repository/UsuarioRepository.class

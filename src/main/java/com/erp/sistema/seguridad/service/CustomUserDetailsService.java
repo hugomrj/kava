@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional; // <-- IMPORTANTE
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -18,17 +19,22 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     @Override
+    @Transactional(readOnly = true) // <-- ESTA LÍNEA SOLUCIONA EL "NO SESSION"
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // 1. Buscamos el usuario en tu BD (Estado = 1 significa activo)
+
         Usuario usuario = usuarioRepository.findByUsuarioAndEstado(username, 1)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado o inactivo: " + username));
 
-        // 2. Lo convertimos al formato que Spring Security entiende
+        // Ahora Hibernate puede acceder a getNivel() porque la transacción está abierta
+        String rol = "USER"; // Valor por defecto
+        if (usuario.getNivel() != null && usuario.getNivel().getDescripcion() != null) {
+            rol = usuario.getNivel().getDescripcion();
+        }
+
         return User.builder()
                 .username(usuario.getUsuario())
-                .password(usuario.getPassword()) // El hash BCrypt de tu BD
-                // Si tienes roles, aquí los asignarías. Por ahora le damos el nivel como rol.
-                .roles(usuario.getNivel() != null ? usuario.getNivel().getDescripcion() : "USER")
+                .password(usuario.getPassword())
+                .roles(rol)
                 .build();
     }
 }

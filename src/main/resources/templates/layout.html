@@ -32,20 +32,10 @@
             </div>
         </div>
 
-        <!-- Centro: Título de página (dinámico) -->
-        <div class="page-title" th:if="${false}">
-            <h1>Panel general</h1>
-            <span>Resumen</span>
-        </div>
 
         <!-- Derecha: Iconos rápidos -->
         <div class="tools-mobile">
-            <button class="icon-btn" aria-label="Buscar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                    <circle cx="11" cy="11" r="6.2"/>
-                    <path d="m20 20-3.4-3.4"/>
-                </svg>
-            </button>
+
             <button class="icon-btn" id="bellBtn" aria-label="Notificaciones">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M6 9.5a6 6 0 0 1 12 0c0 4.8 1.8 5.9 1.8 5.9H4.2S6 14.3 6 9.5"/>
@@ -67,6 +57,9 @@
 
 <!-- SCRIPTS GLOBALES -->
 <script th:src="@{/js/menu-ui.js}"></script>
+<script th:src="@{/js/ux.js}"></script>
+
+
 <th:block layout:fragment="scripts"></th:block>
 
 </body>
