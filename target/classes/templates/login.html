@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 </head>
 <body class="login-body">
 <div class="login-card">
@@ -22,9 +21,16 @@
         <p>ERP SUITE</p>
     </div>
 
-    <div id="error-container"></div>
+    <!-- Contenedor de error (oculto por defecto) -->
+    <div id="error-message" class="alert" style="display: none; color: #dc3545; background: #f8d7da; padding: 10px; border-radius: 4px; margin-bottom: 15px; font-size: 0.9em; display: flex; align-items: center; gap: 8px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4M12 16h.01"/>
+        </svg>
+        <span id="error-text">Credenciales incorrectas.</span>
+    </div>
 
-    <form hx-post="/auth/login" hx-target="#error-container" hx-swap="innerHTML">
+    <form id="loginForm">
         <div class="form-group">
             <label for="username">Usuario</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="admin" required autocomplete="username">
@@ -33,11 +39,58 @@
             <label for="password">Contraseña</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
         </div>
-        <button type="submit" class="btn-login">
+        <button type="submit" class="btn-login" id="submitBtn">
             <span>Ingresar al sistema</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
     </form>
 </div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault(); // Evita la recarga tradicional de la página
+
+        const submitBtn = document.getElementById('submitBtn');
+        const errorDiv = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        const originalBtnText = submitBtn.innerHTML;
+
+        // 1. Estado de carga
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Verificando...</span>';
+        errorDiv.style.display = 'none';
+
+        // 2. Enviar datos al backend
+        const formData = new FormData(this);
+
+        try {
+            const response = await fetch('/auth/login', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+
+            // 3. Manejar la respuesta
+            if (data.success) {
+                window.location.href = data.redirectUrl; // Redirección limpia
+            } else {
+                // Mostrar el mensaje de error que vino del JSON
+                errorText.innerText = data.message;
+                errorDiv.style.display = 'flex';
+
+                // Restaurar botón
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        } catch (error) {
+            console.error('Error de red:', error);
+            errorText.innerText = 'Error de conexión con el servidor.';
+            errorDiv.style.display = 'flex';
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
+    });
+</script>
 </body>
 </html>

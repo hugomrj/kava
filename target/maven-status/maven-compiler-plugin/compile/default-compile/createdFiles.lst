@@ -1,9 +1,10 @@
-com/erp/common/config/AuthInterceptor.class
-com/erp/sistema/seguridad/entity/Usuario.class
+com/erp/sistema/seguridad/service/CustomUserDetailsService.class
+com/erp/sistema/seguridad/controller/PasswordController.class
+com/erp/sistema/seguridad/config/SecurityConfig.class
 com/erp/dashboard/controller/DashboardController.class
 com/erp/Application.class
-com/erp/sistema/seguridad/service/AuthService.class
+com/erp/sistema/seguridad/entity/Usuario.class
 com/erp/sistema/seguridad/controller/LoginController.class
 com/erp/sistema/seguridad/entity/NivelUsuario.class
-com/erp/sistema/seguridad/controller/AuthController.class
 com/erp/sistema/seguridad/repository/UsuarioRepository.class
+com/erp/sistema/seguridad/controller/AuthController.class

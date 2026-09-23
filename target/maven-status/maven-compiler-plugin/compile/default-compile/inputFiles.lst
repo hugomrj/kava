@@ -1,9 +1,10 @@
 /home/hugo/dev/springboot/kava/src/main/java/com/erp/Application.java
-/home/hugo/dev/springboot/kava/src/main/java/com/erp/common/config/AuthInterceptor.java
 /home/hugo/dev/springboot/kava/src/main/java/com/erp/dashboard/controller/DashboardController.java
+/home/hugo/dev/springboot/kava/src/main/java/com/erp/sistema/seguridad/config/SecurityConfig.java
 /home/hugo/dev/springboot/kava/src/main/java/com/erp/sistema/seguridad/controller/AuthController.java
 /home/hugo/dev/springboot/kava/src/main/java/com/erp/sistema/seguridad/controller/LoginController.java
+/home/hugo/dev/springboot/kava/src/main/java/com/erp/sistema/seguridad/controller/PasswordController.java
 /home/hugo/dev/springboot/kava/src/main/java/com/erp/sistema/seguridad/entity/NivelUsuario.java
 /home/hugo/dev/springboot/kava/src/main/java/com/erp/sistema/seguridad/entity/Usuario.java
 /home/hugo/dev/springboot/kava/src/main/java/com/erp/sistema/seguridad/repository/UsuarioRepository.java
-/home/hugo/dev/springboot/kava/src/main/java/com/erp/sistema/seguridad/service/AuthService.java
+/home/hugo/dev/springboot/kava/src/main/java/com/erp/sistema/seguridad/service/CustomUserDetailsService.java
